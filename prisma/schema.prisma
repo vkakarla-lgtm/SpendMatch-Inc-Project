@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id                    String   @id @default(cuid())
+  email                 String   @unique
+  name                  String
+  gpa                   Float
+  enrollmentStatus      String
+  major                 String
+  graduationYear        Int?
+  gender                String?
+  ethnicity             Json?
+  citizenshipStatus     String?
+  householdIncome       Int?
+  financialNeed         Boolean  @default(false)
+  firstGeneration       Boolean  @default(false)
+  militaryAffiliation   String?
+  residency             String?
+  communityServiceHours Int?
+
+  state                 String?
+
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model Scholarship {
+  id                    String   @id
+  name                  String
+  provider              String
+  amount                Int
+  amountType            String
+  deadline              DateTime
+  description           String?
+  applicationRequirements Json?
+  renewable             Boolean  @default(false)
+  renewableConditions   String?
+  url                   String?
+  tags                  Json?
+
+  // fields_of_study is an array in the JSON file -> store as Json for SQLite
+  fieldsOfStudy         Json?
+
+  // Eligibility fields (matching rules)
+  gpaMinimum            Float
+  citizenship           Json?    // array of strings
+  enrollmentStatus      Json?    // array of strings
+
+  // Optional requirements (only enforce when set)
+  requiresFirstGeneration Boolean?
+  requiresFinancialNeed   Boolean?
+  requiredGender          String?
+  requiredEthnicity       Json?  // array of strings
+  minCommunityServiceHours Int?
+  allowedMilitaryAffiliation Json? // array of strings
+  requiredResidency       String?
+
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
