@@ -23,14 +23,14 @@ The OA focuses on correctness, clarity, and testability. The core logic lives in
     - `POST /api/students`
     - `GET /api/scholarships`
     - `GET /api/students/:id/matches`
-(1 hour)
-- `src/matching.ts`
+      
+- `src/matching.ts` (1 hour)
   - Core matching logic:
     - `matchScholarship(student, scholarship)` returns:
       - `ok` (boolean)
       - `reasons` (string array)
-(25 minutes)
-- `src/groq.ts`
+        
+- `src/groq.ts` (25 minutes)
   - Groq API integration:
     - Generates a short personalized explanation for the top match only
 
