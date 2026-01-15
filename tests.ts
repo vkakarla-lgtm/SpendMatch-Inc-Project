@@ -39,7 +39,7 @@ async function run() {
   );
 
   // 4) Verify AI explanation exists on top match
-  // Reason: Confirms Option B (Groq AI integration) works
+  // Reason: Confirms Option B (Groq AI integration) works and is connected
   const topMatch = matchesRes.matches?.[0];
   assert(
     typeof topMatch?.explanation === "string" && topMatch.explanation.length > 0,
