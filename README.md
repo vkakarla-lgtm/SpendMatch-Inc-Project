@@ -8,7 +8,7 @@ This project implements a scholarship matching API that:
 
 The OA focuses on correctness, clarity, and testability. The core logic lives in a pure matching function that can be validated independently of the API layer.
 
-## Tech Stack
+## Tech Stack (5 minutes)
 
 - Node.js + TypeScript
 - Express (API)
@@ -17,19 +17,19 @@ The OA focuses on correctness, clarity, and testability. The core logic lives in
 
 
 ## Project Structure (Where to look)
-
+(1 hour and 30 minutes)
 - `src/index.ts`
   - Express server + required endpoints:
     - `POST /api/students`
     - `GET /api/scholarships`
     - `GET /api/students/:id/matches`
-
+(1 hour)
 - `src/matching.ts`
   - Core matching logic:
     - `matchScholarship(student, scholarship)` returns:
       - `ok` (boolean)
       - `reasons` (string array)
-
+(25 minutes)
 - `src/groq.ts`
   - Groq API integration:
     - Generates a short personalized explanation for the top match only
@@ -41,7 +41,8 @@ The OA focuses on correctness, clarity, and testability. The core logic lives in
   - Seeds the DB using:
     - `students-sample.json`
     - `scholarships.json`
-
+    - 
+(15-20 minutes)
 - `scripts/run-student-tests.ts`
   - Test runner that prints:
     - which scholarships each sample student matches
